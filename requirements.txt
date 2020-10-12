@@ -1,0 +1,5 @@
+psycopg2-binary~=2.8.6
+scrapy~=2.3.0
+pydantic~=1.6.1
+expiringdict~=1.2.1
+w3lib~=1.22.0
