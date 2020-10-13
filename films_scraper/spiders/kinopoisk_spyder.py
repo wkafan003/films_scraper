@@ -28,6 +28,11 @@ class KinipoiskSpider(scrapy.Spider):
         if next_page:
             next_page = response.urljoin(next_page)
             yield scrapy.Request(next_page, callback=self.parse)
+        if settings.DEEP_SCAN:
+            all_pages = response.xpath('//a/@href').getall()
+            for page in all_pages:
+                next_page = response.urljoin(page)
+                yield scrapy.Request(next_page, callback=self.parse)
 
     def parse_film(self, response: scrapy.http.TextResponse, **kwargs):
         title = None

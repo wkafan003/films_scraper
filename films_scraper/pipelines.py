@@ -28,7 +28,6 @@ class DbLoadPipeline:
     def process_item(self, item: Film, spider):
         if type(item) == DropItem:
             return item
-        # return item
         try:
             db.insert_film_if_not_exist(db.conn, item)
             return item
